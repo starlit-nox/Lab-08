@@ -1,10 +1,11 @@
-﻿using Lab08;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 public class Library : ILibrary
 {
     private Dictionary<string, Book> Storage;
 
-    public int Count { get; set; }
+    public int Count => Storage.Count;
 
     public Library()
     {
@@ -13,37 +14,46 @@ public class Library : ILibrary
 
     public void Add(string title, string firstName, string lastName, int numberOfPages)
     {
-        Book newBook = new Book(title, $"{firstName} {lastName}");
+        Book newBook = new Book(title, $"{firstName} {lastName}", numberOfPages);
         Storage.Add(newBook.Title, newBook);
     }
-    Ienumrator Ienumrable.GetEnumrator()
+
+    public Book? Borrow(string title)
     {
+        // check if the book exists in the storage, and if it does, remove and return it
+        if (Storage.TryGetValue(title, out Book book))
         {
-            return this.GetEnumerator();
+            Storage.Remove(title);
+            return book;
         }
-
-        public IEnumerator<Book> GetEnumrator()
-
-}
-    public Book Borrow(string title)
-    {
-        Book returnedBook = Storage.GetValueOrDefault(title);
-        return returnedBook;
+        return null;
     }
 
     public void Return(Book book)
     {
-        Storage.Add(book.Title, book);
+        // add the returned book back to the storage
+        Storage[book.Title] = book;
     }
 
-    public Book Search(string title)
+    public Book? Search(string title)
     {
-        if (result = )
+        // check if the book exists in the storage, and if it does, return it
+        if (Storage.TryGetValue(title, out Book book))
         {
-            return Storage[title];
+            return book;
         }
         return null;
     }
+
+    // Implement IEnumerable<Book> explicitly
+    IEnumerator<Book> IEnumerable<Book>.GetEnumerator()
+    {
+        return Storage.Values.GetEnumerator();
+    }
+
+    // Implement IEnumerable explicitly (non-generic)
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return ((IEnumerable<Book>)this).GetEnumerator();
+    }
 }
-
-

@@ -1,0 +1,15 @@
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.csproj.AssemblyReference.cache
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.AssemblyInfoInputs.cache
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.AssemblyInfo.cs
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.csproj.CoreCompileInputs.cache
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\bin\Debug\net7.0\Lab08.exe
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\bin\Debug\net7.0\Lab08.deps.json
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\bin\Debug\net7.0\Lab08.runtimeconfig.json
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\bin\Debug\net7.0\Lab08.dll
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\bin\Debug\net7.0\Lab08.pdb
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.dll
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\refint\Lab08.dll
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.pdb
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\Lab08.genruntimeconfig.cache
+C:\Users\kdkel\OneDrive\Documents\GitHub\Lab-08\Lab08\obj\Debug\net7.0\ref\Lab08.dll

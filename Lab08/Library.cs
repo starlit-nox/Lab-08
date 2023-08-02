@@ -1,59 +1,66 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 
-public class Library : ILibrary
+namespace Lab08
 {
-    private Dictionary<string, Book> Storage;
-
-    public int Count => Storage.Count;
-
-    public Library()
+    internal class Library : IEnumerable<Book>
     {
-        Storage = new Dictionary<string, Book>();
-    }
+        // private storage for holding the books in the library
+        private List<Book> storage;
 
-    public void Add(string title, string firstName, string lastName, int numberOfPages)
-    {
-        Book newBook = new Book(title, $"{firstName} {lastName}", numberOfPages);
-        Storage.Add(newBook.Title, newBook);
-    }
-
-    public Book? Borrow(string title)
-    {
-        // check if the book exists in the storage, and if it does, remove and return it
-        if (Storage.TryGetValue(title, out Book book))
+        // constructor to create a new Library object
+        public Library()
         {
-            Storage.Remove(title);
-            return book;
+            storage = new List<Book>();
         }
-        return null;
-    }
 
-    public void Return(Book book)
-    {
-        // add the returned book back to the storage
-        Storage[book.Title] = book;
-    }
-
-    public Book? Search(string title)
-    {
-        // check if the book exists in the storage, and if it does, return it
-        if (Storage.TryGetValue(title, out Book book))
+        // method to add a new book to the library
+        public void Add(string title, string authorFirstName, string authorLastName, int numberOfPages)
         {
-            return book;
+            // check if any of the book information is invalid
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(authorFirstName) || string.IsNullOrEmpty(authorLastName) || numberOfPages <= 0)
+            {
+                Console.WriteLine("Invalid book information. Book not added.");
+                return;
+            }
+
+            // create a new Book object and add it to the library
+            Book newBook = new Book(title, authorFirstName, authorLastName, numberOfPages);
+            storage.Add(newBook);
         }
-        return null;
-    }
 
-    // Implement IEnumerable<Book> explicitly
-    IEnumerator<Book> IEnumerable<Book>.GetEnumerator()
-    {
-        return Storage.Values.GetEnumerator();
-    }
+        // method to borrow a book from the library based on its title
+        public Book Borrow(string title)
+        {
+            // find the book to be borrowed in the storage
+            Book borrowedBook = storage.FirstOrDefault(book => book.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+            if (borrowedBook != null)
+            {
+                // remove the borrowed book from the library
+                storage.Remove(borrowedBook);
+            }
+            return borrowedBook;
+        }
 
-    // Implement IEnumerable explicitly (non-generic)
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return ((IEnumerable<Book>)this).GetEnumerator();
+        // method to return a book to the library
+        public void Return(Book book)
+        {
+            // check if the returned book is not null and add it back to the library
+            if (book != null)
+            {
+                storage.Add(book);
+            }
+        }
+
+        // get an enumerator to iterate over the books in the library
+        public IEnumerator<Book> GetEnumerator()
+        {
+            return storage.GetEnumerator();
+        }
+
+        // non-generic version of the enumerator for the IEnumerable interface
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-public interface ILibrary : IEnumerable<Book>
+﻿public interface ILibrary : IEnumerable<Book>
 {
     void Add(string title, string firstName, string lastName, int numberOfPages);
     Book? Borrow(string title);

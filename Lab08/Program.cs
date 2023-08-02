@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lab08
+﻿namespace Lab08
 {
     internal class Program
     {
@@ -9,7 +7,7 @@ namespace Lab08
             Library myLibrary = new Library();
             Backpack myBackpack = new Backpack();
 
-            // Load initial books into the library
+            // load initial books into the library
             myLibrary.Add("No. 6: Volume 1", "Atsuko", "Asano", 176);
             myLibrary.Add("Solanin", "Inio", "Asano", 432);
             myLibrary.Add("I Married My Best Friend to Shut My Parents Up", "Kodama", "Naoko", 176);
@@ -32,6 +30,7 @@ namespace Lab08
                     switch (option)
                     {
                         case 1:
+                            // view books in the library
                             Console.WriteLine("Library Books:");
                             foreach (var book in myLibrary)
                             {
@@ -40,18 +39,22 @@ namespace Lab08
                             break;
 
                         case 2:
+                            // add a book to the library
                             AddBookToLibrary(myLibrary);
                             break;
 
                         case 3:
+                            // borrow a book from the library
                             BorrowBookFromLibrary(myLibrary, myBackpack);
                             break;
 
                         case 4:
+                            // return a book to the library
                             ReturnBookToLibrary(myLibrary, myBackpack);
                             break;
 
                         case 5:
+                            // view books in the backpack
                             Console.WriteLine("Books in your Backpack:");
                             int count = 1;
                             foreach (var book in myBackpack)
@@ -62,43 +65,47 @@ namespace Lab08
                             break;
 
                         case 6:
+                            // exit the program
                             Console.WriteLine("Goodbye!");
                             return;
 
                         default:
+                            // invalid option selected
                             Console.WriteLine("Invalid option. Please choose a valid option.");
                             break;
                     }
                 }
                 else
                 {
+                    // invalid input entered
                     Console.WriteLine("Invalid input. Please enter a valid option number.");
                 }
             }
         }
 
-        // Helper method to add a book to the library
+        // helper method to add a book to the library
         static void AddBookToLibrary(Library library)
         {
             Console.WriteLine("Enter the title of the book:");
             string title = Console.ReadLine();
             Console.WriteLine("Enter the author's first name:");
-            string firstName = Console.ReadLine();
+            string authorFirstName = Console.ReadLine();
             Console.WriteLine("Enter the author's last name:");
-            string lastName = Console.ReadLine();
+            string authorLastName = Console.ReadLine();
             Console.WriteLine("Enter the number of pages:");
             if (int.TryParse(Console.ReadLine(), out int numberOfPages))
             {
-                library.Add(title, firstName, lastName, numberOfPages);
+                library.Add(title, authorFirstName, authorLastName, numberOfPages);
                 Console.WriteLine("Book added to the library.");
             }
             else
             {
+                // invalid number of pages entered
                 Console.WriteLine("Invalid input. Please enter a valid number of pages.");
             }
         }
 
-        // Helper method to borrow a book from the library
+        // helper method to borrow a book from the library
         static void BorrowBookFromLibrary(Library library, Backpack backpack)
         {
             Console.WriteLine("Enter the title of the book to borrow:");
@@ -111,11 +118,12 @@ namespace Lab08
             }
             else
             {
+                // book not found in the library
                 Console.WriteLine("Book not found in the library.");
             }
         }
 
-        // Helper method to return a book to the library
+        // helper method to return a book to the library
         static void ReturnBookToLibrary(Library library, Backpack backpack)
         {
             Console.WriteLine("Enter the number of the book to return:");
@@ -129,11 +137,13 @@ namespace Lab08
                 }
                 else
                 {
+                    // book not found in the backpack
                     Console.WriteLine("Book not found in your backpack.");
                 }
             }
             else
             {
+                // invalid book number entered
                 Console.WriteLine("Invalid input. Please enter a valid book number.");
             }
         }

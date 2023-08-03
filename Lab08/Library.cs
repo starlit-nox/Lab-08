@@ -2,7 +2,7 @@
 
 namespace Lab08
 {
-    public class Library : IEnumerable<Book>
+    public class Library : ILibrary
     {
         private List<Book> storage;
         private string dataFilePath;

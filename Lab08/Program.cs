@@ -9,7 +9,7 @@
 
             while (true)
             {
-                Console.WriteLine("Hello! Welcome to my Library");
+                Console.WriteLine("Howdy! Welcome to Phil's Lending Library. What can I do ya' for?");
                 Console.WriteLine("Pick an option:");
                 Console.WriteLine("1: View Books");
                 Console.WriteLine("2: Add Book");

@@ -46,11 +46,18 @@
 
                         case 5:
                             Console.WriteLine("Books in your Backpack:");
-                            int count = 1;
-                            foreach (var book in myBackpack)
+                            if (myBackpack.Count() == 0)
                             {
-                                Console.WriteLine($"{count}: {book.Title} by {book.AuthorFirstName} {book.AuthorLastName}, {book.NumberOfPages} pages");
-                                count++;
+                                Console.WriteLine("Your backpack is empty.");
+                            }
+                            else
+                            {
+                                int count = 1;
+                                foreach (var book in myBackpack)
+                                {
+                                    Console.WriteLine($"{count}: {book.Title} by {book.AuthorFirstName} {book.AuthorLastName}, {book.NumberOfPages} pages");
+                                    count++;
+                                }
                             }
                             break;
 
@@ -111,6 +118,12 @@
         // Helper method to return a book to the library
         static void ReturnBookToLibrary(Library library, Backpack backpack)
         {
+            if (backpack.Count() == 0)
+            {
+                Console.WriteLine("There are no books to return.");
+                return;
+            }
+
             Console.WriteLine("Enter the number of the book to return:");
             if (int.TryParse(Console.ReadLine(), out int bookNumber) && bookNumber >= 1 && bookNumber <= backpack.Count())
             {

@@ -1,25 +1,23 @@
-﻿public class Book
+﻿namespace Lab08
 {
-    // title of the book
-    public string Title { get; set; }
-
-    // author of the book (concatenated first name and last name)
-    public string Author { get; set; }
-
-    // number of pages in the book
-    public int NumberOfPages { get; set; }
-
-    // constructor to create a new Book object
-    public Book(string title, string authorFirstName, string authorLastName, int numberOfPages)
+    public class Book
     {
-        Title = title;
-        Author = $"{authorFirstName} {authorLastName}";
-        NumberOfPages = numberOfPages;
-    }
+        public string Title { get; private set; }
+        public string AuthorFirstName { get; private set; }
+        public string AuthorLastName { get; private set; }
+        public int NumberOfPages { get; private set; }
 
-    // override ToString method to get the formatted book information as a string
-    public override string ToString()
-    {
-        return $"{Title} by {Author}, {NumberOfPages} pages";
+        public Book(string title, string authorFirstName, string authorLastName, int numberOfPages)
+        {
+            Title = title;
+            AuthorFirstName = authorFirstName;
+            AuthorLastName = authorLastName;
+            NumberOfPages = numberOfPages;
+        }
+
+        public override string ToString()
+        {
+            return $"\"{Title}\" by {AuthorFirstName} {AuthorLastName}, {NumberOfPages} pages";
+        }
     }
 }

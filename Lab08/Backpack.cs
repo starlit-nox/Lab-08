@@ -1,50 +1,43 @@
 ﻿namespace Lab08
 {
-    internal class Backpack : IBag<Book>
+    internal class Backpack : IEnumerable<Book>
     {
-        private List<Book> storage; // this is where the books will be stored
+        private List<Book> books;
 
         public Backpack()
         {
-            this.storage = new List<Book>(); // this initializes the storage list in the constructor
+            books = new List<Book>();
         }
 
-        public void Pack(Book item)
+        public void Pack(Book book)
         {
-            this.storage.Add(item); // this adds a book to the storage
+            books.Add(book);
         }
 
-        // this unpacks the book by index
         public Book Unpack(int index)
         {
-            if (index >= 0 && index < this.storage.Count) // this checks if the index is valid
+            if (index >= 0 && index < books.Count)
             {
-                Book unpackedBook = this.storage[index]; // this gets the book at the specified index
-                this.storage.RemoveAt(index); // this removes the book at the specified index
-                return unpackedBook;
+                Book book = books[index];
+                books.RemoveAt(index);
+                return book;
             }
-            return null; // this returns null if the index is invalid
-        }
-        public Book Unpack(string title)
-        {
-            Book unpackedBook = this.storage.FirstOrDefault(book => book.Title.Equals(title, StringComparison.OrdinalIgnoreCase)); // this finds the book by title using case-insensitive comparison
-            if (unpackedBook != null)
-            {
-                this.storage.Remove(unpackedBook); // this removes the book from the storage if found
-            }
-            return unpackedBook;
+            return null;
         }
 
-        // explicitly implemented to avoid naming conflict with the Library's Storage property
-        IEnumerator<Book> IEnumerable<Book>.GetEnumerator()
+        public int Count()
         {
-            return this.storage.GetEnumerator(); // this returns an enumerator for the books in the storage
+            return books.Count;
         }
 
-        // explicitly implemented to avoid naming conflict with the Library's Storage property
+        public IEnumerator<Book> GetEnumerator()
+        {
+            return books.GetEnumerator();
+        }
+
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return this.storage.GetEnumerator(); // this returns an enumerator for the books in the storage
+            return GetEnumerator();
         }
     }
 }
